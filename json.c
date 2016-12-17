@@ -44,7 +44,8 @@ struct json *json_dec(char *text, int *lenr)
 				strcpy(rtn[ln].value, getval(string));
 			}else
 			{
-				strncat(string, &text[i], 1);
+				if(strlen(string) < 200)
+					strncat(string, &text[i], 1);
 			}
 		}
 
