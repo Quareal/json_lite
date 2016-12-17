@@ -2,17 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <malloc.h>
-
+// Структура 
 struct json {
 	char name[200];
 	char value[200];
 };
-
+// Прототипы 
 int 		json_check(char *text);
 char 		*getval(char *text);
 char 		*jdata(struct json *array, char *name, int length);
 struct json *json_dec(char *text, int *lenr);
-
+// Функция раскодирования json
 struct json *json_dec(char *text, int *lenr)
 {
 	struct 	json *rtn;
@@ -58,7 +58,7 @@ struct json *json_dec(char *text, int *lenr)
 		return rtn;
 	}
 }
-
+// Проверка валидности json
 int json_check(char *text)
 {
 	int i, len = 0;
@@ -78,7 +78,7 @@ int json_check(char *text)
 		return -1;
 	}
 }
-
+// Получение точного значения элемента
 char *getval(char *text)
 {
 	int 	i, in=0, to=0, k=1;
@@ -109,7 +109,7 @@ char *getval(char *text)
 
 	return ret;
 }
-
+// Функция возвращает значение определенного элемента массива json ( по имени )
 char *jdata(struct json *array, char *name, int length)
 {
 	int i;
@@ -121,14 +121,16 @@ char *jdata(struct json *array, char *name, int length)
 
 int main()
 {
+	// Переменная i - для цикла, length - для количества элементов массива
 	int i, length;
+	// В переменную ch записывается массив json
 	struct json *ch = json_dec("{\"data\":\"2\", \"name\":\"game\", \"state\":\"Hello world!\"}", &length);
 
 	for(i=0;i<length;i++)
 	{
 		printf("%s - %s\n", ch[i].name, ch[i].value);
 	}
-
+	// Возвращаем значение элемента с именем state, ответ будет - Hello world!
 	printf("\n\n%s", jdata(ch, "state", length));
 
 	free(ch);
