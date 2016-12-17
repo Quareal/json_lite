@@ -11,7 +11,7 @@ struct json {
 int 		json_check(char *text);
 char 		*getval(char *text);
 char 		*jdata(struct json *array, char *name, int length);
-struct json *json_dec(char *text, int *lenr);
+struct json 	*json_dec(char *text, int *lenr);
 // Функция раскодирования json
 struct json *json_dec(char *text, int *lenr)
 {
