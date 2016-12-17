@@ -38,7 +38,7 @@ struct json *json_dec(char *text, int *lenr)
 				rtn = (struct json *)realloc(rtn, sizeof(struct json) * length);
 				memset(string, 0, 201);
 				string[0] = '\0';
-				ln += 1;
+				ln++;
 			}else if(text[i] == '}' && strlen(text)-1 == i)
 			{
 				strcpy(rtn[ln].value, getval(string));
@@ -68,7 +68,7 @@ int json_check(char *text)
 	{
 		for(i=0;i<strlen(text);i++)
 			if(text[i] == '"')
-				len += 1;
+				len++;
 
 		if(len % 2 == 0)
 			return 1;
